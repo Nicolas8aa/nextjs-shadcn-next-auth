@@ -1,10 +1,20 @@
-import Image from "next/image";
-import { SignInButton } from "@/components/sign-in-button";
+'use client'
+import { Button } from '@/components/ui/button'
+import { signOut } from 'next-auth/react'
+import React from 'react'
 
-export default function Home() {
+const HomePage = () => {
   return (
     <div>
-      <SignInButton />
+      <Button
+        onClick={() => {
+          signOut()
+        }}
+      >
+        Click me xdd
+      </Button>
     </div>
-  );
+  )
 }
+
+export default HomePage

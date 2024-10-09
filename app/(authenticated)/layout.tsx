@@ -4,7 +4,12 @@ type AuthenticatedLayoutProps = {
   children: React.ReactNode
 }
 const AuthenticatedLayout = ({ children }: AuthenticatedLayoutProps) => {
-  return <>{children}</>
+  return (
+    <div>
+      yesss
+      {children}
+    </div>
+  )
 }
 
 export default AuthenticatedLayout

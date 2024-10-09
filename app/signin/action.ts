@@ -19,5 +19,4 @@ export async function signInAction(formData: FormData, callbackUrl?: string) {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/')
 }
