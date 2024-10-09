@@ -36,6 +36,12 @@ export const signInSchema = object({
 
  
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  callbacks: {
+    authorized: async ({ auth }) => {
+      // Logged in users are authenticated, otherwise redirect to login page
+      return !!auth
+    },
+  },
   providers: [
     Credentials({
       // You can specify which fields should be submitted, by adding keys to the `credentials` object.
@@ -66,4 +72,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
+  pages: {
+    signIn: "/signin",
+  }
 })
