@@ -1,7 +1,20 @@
+'use client'
+import { Button } from '@/components/ui/button'
+import { signOut } from 'next-auth/react'
 import React from 'react'
 
 const HomePage = () => {
-  return <div>HomePage</div>
+  return (
+    <div>
+      <Button
+        onClick={() => {
+          signOut()
+        }}
+      >
+        Click me
+      </Button>
+    </div>
+  )
 }
 
 export default HomePage

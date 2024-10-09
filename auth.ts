@@ -1,20 +1,27 @@
 import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import { prisma } from './db'
-import { scryptSync, randomBytes } from 'crypto'
+import { scryptSync, randomBytes, pbkdf2Sync } from 'crypto'
 
-const saltAndHashPassword = (password: string): string => {
+export const saltAndHashPassword = (password: string): string => {
   const salt = randomBytes(16).toString('hex')
   const hash = scryptSync(password, salt, 32).toString('hex')
-
-  return hash
+  return `${salt}:${hash}`
 }
 
-const getUserFromDb = async (username: string, pwHash: string) => {
+const verifyPassword = (
+  storedPassword: string,
+  inputPassword: string,
+): boolean => {
+  const [salt, storedHash] = storedPassword.split(':')
+  const inputHash = scryptSync(inputPassword, salt, 32).toString('hex')
+  return storedHash === inputHash
+}
+
+const getUserFromDb = async (username: string) => {
   const user = await prisma.user.findUnique({
     where: {
       username,
-      password: pwHash,
     },
   })
   return user
@@ -57,14 +64,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         )
 
         // logic to salt and hash password
-        const pwHash = saltAndHashPassword(password)
 
         // logic to verify if the user exists
-        user = await getUserFromDb(username, pwHash)
+        user = await getUserFromDb(username)
+
+        // logic to verify if the password is correct
 
         if (!user) {
           // No user found, so this is their first attempt to login
           // meaning this is also the place you could do registration
+          throw new Error('Usuario o contraseña incorrectos')
+        }
+
+        // logic to verify if the password is correct
+        if (!verifyPassword(user.password, password)) {
+          // Password is incorrect
           throw new Error('Usuario o contraseña incorrectos')
         }
 
