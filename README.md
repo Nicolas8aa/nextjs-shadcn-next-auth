@@ -1,33 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nextjs Prisma Authjs Zod Shadcn Starter
+
+This is a starter template for building a full-stack web application with Next.js, Prisma, NextAuth, Zod, and Shadcn. It includes features like user authentication, type-safe form validation, and server actions for seamless data fetching and handling.
+
+## Tech Stack
+
+This project is built using the following technologies:
+
+- **Next.js**: v14.2.15
+- **Prisma**: v5.20.0 (using MySQL connector)
+- **Shadcn**
+- **NextAuth (Auth.js)**: v5
+- **Zod**
+- **Next.js Server Actions**
+
+## Features
+
+- User authentication with NextAuth (credentials provider)
+- Type-safe form validation using Zod
+- Server actions for seamless data fetching and handling
+- A modern and responsive UI powered by Shadcn
 
 ## Getting Started
 
-First, run the development server:
+To get started with this project, follow the steps below:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Make sure you have the following installed on your machine:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Node.js](https://nodejs.org/) (version 14 or above)
+- [MySQL](https://www.mysql.com/) (or another database of your choice)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Installation
 
-## Learn More
+1. Clone the repository:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   git clone https://github.com/yourusername/your-repo-name.git
+   cd your-repo-name
+   ```
 
 ## Deploy on Vercel
 

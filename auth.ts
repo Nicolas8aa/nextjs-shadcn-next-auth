@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import { prisma } from './db'
-import { scryptSync, randomBytes, pbkdf2Sync } from 'crypto'
+import { scryptSync, randomBytes } from 'crypto'
 
 export const saltAndHashPassword = (password: string): string => {
   const salt = randomBytes(16).toString('hex')
