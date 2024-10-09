@@ -43,6 +43,17 @@ export const signInSchema = object({
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
+    async session({ session, token, user }) {
+      // Attach the user information to the session
+      session.user = token.user as any
+      return session
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.user = user as any
+      }
+      return token
+    },
     authorized: async ({ auth }) => {
       // Logged in users are authenticated, otherwise redirect to login page
       return !!auth
