@@ -19,8 +19,10 @@
     "lucide-react": "^0.451.0",
     "next": "14.2.15",
     "next-auth": "^5.0.0-beta.22",
+    "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
+    "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.3",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
@@ -37,5 +39,10 @@
     "prisma": "^5.20.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
   }
 }
